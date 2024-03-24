@@ -3,7 +3,7 @@
 Fangyuan Li, Isaac Liu, Robert Thompson
 
 ## Conda Environment
-The environment data_engineering_project can be found in environment.yml.
+The environment `data_engineering_project` can be found in `environment.yml`.
 
 To make yourself a copy of the environment, run `conda env create -f environment.yml`. To update the environment if the yaml changes, run `conda env update --name data_engineering_project --file environment.yml --prune`.
 
