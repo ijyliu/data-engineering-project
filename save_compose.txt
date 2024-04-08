@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  milvus_server:
+    image: milvusdb/milvus:2.3-latest
+    container_name: milvus_server
+    ports:
+      - "19530:19530" # Default port for Milvus
+      - "19121:19121" # Milvus web interface (if needed)
+    volumes:
+      - milvus_db:/var/lib/milvus/db
+      - milvus_conf:/var/lib/milvus/conf
+      - milvus_logs:/var/lib/milvus/logs
+      - milvus_wal:/var/lib/milvus/wal
+
+  app:
+    build: .
+    depends_on:
+      - milvus_server
+    ports:
+      - "5001:5000"
+    environment:
+      MILVUS_HOST: milvus_server # Use the service name as the hostname
+
+volumes:
+  milvus_db:
+  milvus_conf:
+  milvus_logs:
+  milvus_wal:
+
