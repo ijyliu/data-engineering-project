@@ -15,7 +15,7 @@
 3. install pymilvus w/ command line, `pip install pymilvus`
   - NOTE: when i was doing this i ran into version issues for lawd knows what reason and I have to run 
   `pip uninstall pymilvus`
-  `pip install pymilvus==2.0.2`
+  `pip install pymilvus`
   in my command line to fix it. if you run into problems ask chatgpt it is pretty good at that.
 
 ## step 3: explore the sample code in these folders
