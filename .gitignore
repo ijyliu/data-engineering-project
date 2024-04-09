@@ -1,2 +1,1 @@
-./milvus_step/volumes
-./volumes
+milvus_setup/volumes
