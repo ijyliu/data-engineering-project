@@ -1,30 +1,54 @@
-name: pymilvus_env
+name: data_engineering_project
 channels:
   - defaults
   - conda-forge
 dependencies:
+  - bzip2=1.0.8=h2bbff1b_5
   - ca-certificates=2024.3.11=haa95532_0
-  - certifi=2024.2.2=py38haa95532_0
-  - openssl=1.1.1w=h2bbff1b_0
-  - pip=23.3.1=py38haa95532_0
-  - python=3.8.0=hff0d562_2
-  - setuptools=68.2.2=py38haa95532_0
+  - expat=2.5.0=hd77b12b_0
+  - libffi=3.4.4=hd77b12b_0
+  - openssl=3.0.13=h2bbff1b_0
+  - pip=23.3.1=py312haa95532_0
+  - python=3.12.2=h1d929f7_0
+  - setuptools=68.2.2=py312haa95532_0
   - sqlite=3.41.2=h2bbff1b_0
+  - tk=8.6.12=h2bbff1b_0
   - vc=14.2=h21ff451_1
   - vs2015_runtime=14.27.29016=h5e58377_2
-  - wheel=0.41.2=py38haa95532_0
-  - wincertstore=0.2=py38haa95532_2
+  - wheel=0.41.2=py312haa95532_0
+  - xz=5.4.6=h8cc25b3_0
+  - zlib=1.2.13=h8cc25b3_0
   - pip:
-      - grpcio==1.37.1
-      - grpcio-tools==1.37.1
-      - mmh3==3.0.0
-      - numpy==1.24.4
-      - pandas==2.0.3
-      - protobuf==3.20.3
-      - pymilvus==2.0.2
+      - argon2-cffi==23.1.0
+      - argon2-cffi-bindings==21.2.0
+      - azure-core==1.30.1
+      - azure-storage-blob==12.19.1
+      - certifi==2024.2.2
+      - cffi==1.16.0
+      - charset-normalizer==3.3.2
+      - cryptography==42.0.5
+      - environs==9.5.0
+      - grpcio==1.60.0
+      - idna==3.6
+      - isodate==0.6.1
+      - marshmallow==3.21.1
+      - minio==7.2.5
+      - numpy==1.26.4
+      - packaging==24.0
+      - pandas==2.2.1
+      - protobuf==5.26.1
+      - pyarrow==15.0.2
+      - pycparser==2.22
+      - pycryptodome==3.20.0
+      - pymilvus==2.4.0
       - python-dateutil==2.9.0.post0
+      - python-dotenv==1.0.1
       - pytz==2024.1
+      - requests==2.31.0
+      - scipy==1.13.0
       - six==1.16.0
+      - typing-extensions==4.11.0
       - tzdata==2024.1
-      - ujson==5.1.0
-prefix: C:\Users\ijyli\miniforge3\envs\pymilvus_env
+      - ujson==5.9.0
+      - urllib3==2.2.1
+prefix: C:\Users\ijyli\miniforge3\envs\data_engineering_project
