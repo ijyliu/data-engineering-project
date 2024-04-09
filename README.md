@@ -2,6 +2,10 @@
 
 Fangyuan Li, Isaac Liu, Robert Thompson
 
+## Google Doc
+
+Doc [here](https://docs.google.com/document/d/1MmpETAMZjmVuSV9vUHBsQRk6wCEzYUA8m-2mjfX16VY/edit).
+
 ## Conda Environment
 The environment `data_engineering_project` can be found in `environment.yml`.
 
