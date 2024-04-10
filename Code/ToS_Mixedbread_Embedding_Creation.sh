@@ -4,8 +4,8 @@
 #SBATCH --partition=jsteinhardt
 #SBATCH --gres=gpu:A100:1
 
-echo "Starting NER on Company Names"
+echo "Starting Embedding Creation"
 
 jupyter nbconvert --to notebook --execute --inplace ToS_Mixedbread_Embedding_Creation.ipynb
 
-echo "Completed NER"
+echo "Completed Embedding Creation"
