@@ -37,14 +37,32 @@ def return_top_5_sentences(collection, query_embedding):
         consistency_level="Strong"
     )
 
+    # Get sentences from results
+    sentences = []
+    for hits in results:
+        # Get ids
+        #print(hits.ids)
+        # Get distances
+        #print(hits.distances)
+        for hit in hits:
+            # Get id
+            #print(hit.id)
+            # Get distance
+            #print(hit.distance) # hit.score
+            # Get vector
+            #hit.vector
+            # Get output field
+            #print(hit.get("sentence"))
+            sentences.append(hit.get("sentence"))
+
     # get the IDs of all returned hits
     #results[0].ids
 
     # get the distances to the query vector from all returned hits
     #results[0].distances
-    print(results)
+    #print(results)
 
     # get the value of an output field specified in the search request.
-    hit = results[0][0]
-    hit.entity.get('sentence')
-    return hit
+    #hit = results[0][0]
+    #hit.entity.get('sentence')
+    return sentences
