@@ -3,23 +3,20 @@
 ###################################################################################################
 
 # Packages
-#import pymilvus
 import time
 
 ###################################################################################################
 
-def transform_query(query: str) -> str:
-    """ 
-    For mixedbread embedding retrieval, add the prompt for query (not for documents).
-    """
-    return f'Represent this sentence for searching relevant passages: {query}'
-
-def get_mixedbread_of_query(model, input: str):
+def get_mixedbread_of_query(model, query: str):
     '''
     Returns mixedbread embedding for an input text. Text is appropriately formatted to be a query.
+
+    Parameters:
+    - model: embedding model
+    - query: str: The query to be transformed.
     '''
-    transformed_input = transform_query(input)
-    return model.encode(transformed_input)
+    transformed_query = f'Represent this sentence for searching relevant passages: {query}'
+    return model.encode(transformed_query)
 
 def return_top_5_sentences(collection, query_embedding):
     '''
@@ -51,38 +48,15 @@ def return_top_5_sentences(collection, query_embedding):
     # End timer
     end_time = time.time()
 
-    # Get sentences and documents from results
+    # Get sentences, companies, and documents from results
     sentences = []
     companies = []
     documents = []
     for hits in results:
-        # Get ids
-        #print(hits.ids)
-        # Get distances
-        #print(hits.distances)
         for hit in hits:
-            # Get id
-            #print(hit.id)
-            # Get distance
-            #print(hit.distance) # hit.score
-            # Get vector
-            #hit.vector
-            # Get output field
-            #print(hit.get("sentence"))
             sentences.append(hit.get("sentence"))
             companies.append(hit.get("company_name"))
             documents.append(hit.get("document_name"))
-
-    # get the IDs of all returned hits
-    #results[0].ids
-
-    # get the distances to the query vector from all returned hits
-    #results[0].distances
-    #print(results)
-
-    # get the value of an output field specified in the search request.
-    #hit = results[0][0]
-    #hit.entity.get('sentence')
 
     # Get filenames
     # Join company and document names on underscore and add .txt
@@ -90,8 +64,5 @@ def return_top_5_sentences(collection, query_embedding):
     # Keep unique values
     filenames = list(set(filenames))
 
-    # get unique document names
-    # documents = list(set(documents))
-
-    # return sentences, filenames, and time taken rouded to 2 decimal places
+    # Return sentences, filenames, and time taken
     return sentences, filenames, end_time - start_time

@@ -28,7 +28,7 @@ schema = CollectionSchema(fields, description="Generated text embeddings")
 
 collection = Collection(name=collection_name, schema=schema)
 
-dir_path = '../../Text Data Embeddings'
+dir_path = '../../Embeddings'
 
 t0 = time.time()
 for path in os.listdir(dir_path):
