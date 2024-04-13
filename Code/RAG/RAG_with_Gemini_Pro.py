@@ -73,7 +73,11 @@ while True:
     #print(prompt)
 
     # Get response
+    # Start timer
+    start_time = time.time()
     response = chat_model.generate_content(prompt)
+    # End timer
+    end_time = time.time()
     # Format response for user
-    response_for_user = "Assistant: " + response.text + "\nDocuments Cited: " + ', '.join(documents_cited) + "\nMilvus Query Time: " + str(round(milvus_query_time, 2)) + ' seconds'
+    response_for_user = "Assistant: " + response.text + "\nDocuments Cited: " + ', '.join(documents_cited) + "\nMilvus Query Time: " + str(round(milvus_query_time, 2)) + ' seconds' + "\nChat Model Response Time: " + str(round(end_time - start_time, 2)) + ' seconds'
     print(response_for_user)
