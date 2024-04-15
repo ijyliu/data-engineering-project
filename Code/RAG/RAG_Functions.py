@@ -48,15 +48,17 @@ def return_top_5_sentences(collection, query_embedding):
     # End timer
     end_time = time.time()
 
-    # Get sentences, companies, and documents from results
+    # Get sentences, companies, documents and distance from results
     sentences = []
     companies = []
     documents = []
+    distance = []
     for hits in results:
         for hit in hits:
             sentences.append(hit.get("sentence"))
             companies.append(hit.get("company_name"))
             documents.append(hit.get("document_name"))
+            distance.append(hit.distance)
 
     # Get filenames
     # Join company and document names on underscore and add .txt
@@ -65,4 +67,4 @@ def return_top_5_sentences(collection, query_embedding):
     filenames = list(set(filenames))
 
     # Return sentences, filenames, and time taken
-    return sentences, filenames, end_time - start_time
+    return sentences, filenames, distance, end_time - start_time
