@@ -18,7 +18,7 @@ def get_mixedbread_of_query(model, query: str):
     transformed_query = f'Represent this sentence for searching relevant passages: {query}'
     return model.encode(transformed_query)
 
-def return_top_n_sentences(collection, query_embedding, n=5):
+def return_top_n_sentences(collection, query_embedding, n=5, repeat=1):
     '''
     Returns top n sentences from the collection based on the query embedding. Also includes unique associated files used and time taken.
     '''
@@ -34,16 +34,19 @@ def return_top_n_sentences(collection, query_embedding, n=5):
     # Start timer
     start_time = time.time()
 
-    # Use Milvus to search for similar vectors
-    results = collection.search(
-        data=[query_embedding], # query vector
-        anns_field="embedding", # name of field to search on
-        param=search_params, # seach parameters set above
-        limit=n,# num results to return
-        expr=None, # boolean filter
-        output_fields=['company_name', 'sentence', 'document_name'], # fields to return 
-        consistency_level="Strong"
-    )
+    # repeat the process to time the query
+    for _ in range(repeat):
+
+        # Use Milvus to search for similar vectors
+        results = collection.search(
+            data=[query_embedding], # query vector
+            anns_field="embedding", # name of field to search on
+            param=search_params, # seach parameters set above
+            limit=n,# num results to return
+            expr=None, # boolean filter
+            output_fields=['company_name', 'sentence', 'document_name'], # fields to return 
+            consistency_level="Strong"
+        )
 
     # End timer
     end_time = time.time()
@@ -67,4 +70,4 @@ def return_top_n_sentences(collection, query_embedding, n=5):
     filenames = list(set(filenames))
 
     # Return sentences, filenames, and time taken
-    return sentences, filenames, distance, end_time - start_time
+    return sentences, filenames, distance, (end_time - start_time)/repeat
