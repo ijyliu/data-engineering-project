@@ -18,9 +18,9 @@ def get_mixedbread_of_query(model, query: str):
     transformed_query = f'Represent this sentence for searching relevant passages: {query}'
     return model.encode(transformed_query)
 
-def return_top_5_sentences(collection, query_embedding):
+def return_top_n_sentences(collection, query_embedding, n=5):
     '''
-    Returns top 5 sentences from the collection based on the query embedding. Also includes unique associated files used and time taken.
+    Returns top n sentences from the collection based on the query embedding. Also includes unique associated files used and time taken.
     '''
 
     # Set search parameters
@@ -39,7 +39,7 @@ def return_top_5_sentences(collection, query_embedding):
         data=[query_embedding], # query vector
         anns_field="embedding", # name of field to search on
         param=search_params, # seach parameters set above
-        limit=5,# num results to return
+        limit=n,# num results to return
         expr=None, # boolean filter
         output_fields=['company_name', 'sentence', 'document_name'], # fields to return 
         consistency_level="Strong"
